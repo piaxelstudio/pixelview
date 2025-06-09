@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Import the component -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+    <style>
+        model-viewer {
+            height: 85vh;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+	
+  <!-- +Banner Top+ -->
+  <!--
+  <div class="banner-top">
+    <img src="logoLesToilesFilantes.webp" alt="Toiles Filantes" class="banner-logo">
+    <button class="banner-button" onclick="window.location.href='https://lestoilesfilantes.bigcartel.com/products';">Boutique</button>
+  </div>
+  -->
+<div class="banner-top">
+  <div class="banner-content">
+    <img src="logoLesToilesFilantes.webp" alt="Les Toiles Filantes" class="banner-logo-top">
+	
+	Panières de rangement en tissu
+	
+    <button class="banner-button" onclick="window.location.href='https://lestoilesfilantes.bigcartel.com/products';">Boutique</button>
+  </div>
+</div>
+<!-- -Banner Top- -->
+  
+<model-viewer src="paniere_rangement_tissu/ltf01_paniere.glb" ios-src="paniere_rangement_tissu/ltf01_paniere.usdz" poster="paniere_rangement_tissu/ltf01_paniere.gif" shadow-intensity="0" exposure="0.5" ar ar-modes="webxr scene-viewer quick-look" camera-controls disable-zoom alt="Panière de rangement en tissu">
+  
+  <button slot="ar-button" id="ar-button">
+    Visualiser chez soi !
+  </button>
+
+  <div id="ar-prompt">
+    <img src="assets/hand.png">
+  </div>
+
+  <button id="ar-failure">
+    Orientez votre camera vers l'emplacement souhaité
+  </button> 
+
+</model-viewer>
+
+  <!-- +Banner Bottom+ -->
+  <!--
+    <div class="banner-bottom">
+		<img src="logo_pIAxel_2.svg" alt="&copy; 2025 pIAxel Studio" class="banner-logo">
+		  <button class="buy-button" style="background: #28a745;" onclick="window.location.href='https://lestoilesfilantes.bigcartel.com/product/sur-commande-paniers-de-rangement-en-tissu';">
+    Commander
+  </button>
+  </div>
+  -->
+<div class="banner-bottom">
+  <div class="banner-content">
+  <button class="buy-button" onclick="window.location.href='https://lestoilesfilantes.bigcartel.com/product/sur-commande-paniers-de-rangement-en-tissu';">
+      Commander
+    </button>
+	
+    <img src="assets/logo_pIAxelStudio2.webp" alt="pIAxel Studio" class="banner-logo-bottom">
+    
+  </div>
+</div>
+  <!-- -Banner Bottom- -->
+  
+  
+<script type="module">
+  const modelViewer = document.querySelector("model-viewer");
+
+  window.switchSrc = (element, name) => {
+    const base = "assets/models/" + name;
+    modelViewer.src = base + '.glb';
+    modelViewer.poster = base + '.png';
+    const slides = document.querySelectorAll(".slide");
+    slides.forEach((element) => {element.classList.remove("selected");});
+    element.classList.add("selected");
+  };
+
+  document.querySelector(".slider").addEventListener('beforexrselect', (ev) => {
+    // Keep slider interactions from affecting the XR scene.
+    ev.preventDefault();
+  });
+</script>
+
+<style>
+  /* This keeps child nodes hidden while the element loads */
+  :not(:defined) > * {
+    display: none;
+  }
+  
+  body {
+      font-family: Snell Roundhand, cursive;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    .banner-top, .banner-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #1a1a1a;
+      color: white;
+      padding: 15px 15px;
+      position: fixed;
+      width: 97%;
+      z-index: 1000;
+	  margin: 5px;
+    }
+    .banner-top {
+      top: 0;
+    }
+    .banner-bottom {
+      bottom: 0;
+    }
+    .banner-logo-top {
+	  height: 40px;
+	  max-width: 220px;
+	  object-fit: contain;
+    }
+	.banner-logo-bottom {
+	  height: 50px;
+	  max-width: 50px;
+	  object-fit: contain;
+    }
+    .banner-button {
+      background: #0078d7;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .banner-button:hover {
+      background: #005fa3;
+    }
+	.banner-content {
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	  width: 100%;
+	}
+
+  model-viewer {
+    background-color: #eee;
+    overflow-x: hidden;
+    --poster-color: #eee;
+	  width: 100%;
+	  height: 90vh;
+	  margin: 0 auto;
+	  background: white;
+	  border-radius: 10px;
+	  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  #ar-button {
+    background-image: url(assets/ic_view_in_ar_new_googblue_48dp.png);
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    background-position: 130px 50%;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    bottom: 132px;
+    padding: 0px 16px 0px 60px;
+    font-family: Roboto Regular, Helvetica Neue, sans-serif;
+    font-size: 40px;
+    color:#4285f4;
+    height: 60px;
+    line-height: 36px;
+    border-radius: 10px;
+    border: 1px solid #DADCE0;
+  }
+  
+
+  #ar-button:active {
+    background-color: #E8EAED;
+  }
+
+  #ar-button:focus {
+    outline: none;
+  }
+
+  #ar-button:focus-visible {
+    outline: 1px solid #4285f4;
+  }
+
+  @keyframes circle {
+    from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
+    to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
+  }
+
+  @keyframes elongate {
+    from { transform: translateX(100px); }
+    to   { transform: translateX(-100px); }
+  }
+
+  model-viewer > #ar-prompt {
+    position: absolute;
+    left: 50%;
+    bottom: 175px;
+    animation: elongate 2s infinite ease-in-out alternate;
+    display: none;
+  }
+
+  model-viewer[ar-status="session-started"] > #ar-prompt {
+    display: block;
+  }
+
+  model-viewer > #ar-prompt > img {
+    animation: circle 4s linear infinite;
+  }
+
+  model-viewer > #ar-failure {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 175px;
+    display: none;
+  }
+
+  model-viewer[ar-tracking="not-tracking"] > #ar-failure {
+    display: block;
+  }
+
+  .slider {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    position: absolute;
+    bottom: 16px;
+  }
+
+  .slides {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .slide {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #fff;
+    margin-right: 10px;
+    border-radius: 10px;
+    border: none;
+    display: flex;
+  }
+
+  .slide.selected {
+    border: 2px solid #4285f4;
+  }
+
+  .slide:focus {
+    outline: none;
+  }
+
+  .slide:focus-visible {
+    outline: 1px solid #4285f4;
+  }
+  
+  .buy-button {
+	  margin: 0px calc(40vw - 15px);
+	  margin: 0px calc(40vw - 15px);
+	  padding: 15px 30px;
+	  font-size: 18px;
+	  background: #0078d7;
+	  color: white;
+	  border: none;
+	  border-radius: 8px;
+	  cursor: pointer;
+	  transition: transform 0.1s ease, box-shadow 0.2s ease;
+	  box-shadow: 0 6px 12px rgba(0, 120, 215, 0.3);
+	}
+	.buy-button:hover {
+	  box-shadow: 0 8px 18px rgba(0, 120, 215, 0.5);
+	}
+	.buy-button:active {
+	  transform: scale(0.95);
+	}
+    footer {
+      margin-bottom: 60px;
+      font-size: 0.9em;
+      color: #777;
+      padding: 10px;
+    }
+
+</style>
+
+
+</body>
+</html>
+
